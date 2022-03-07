@@ -1,4 +1,4 @@
-<?php 
+<?php
 define('_SERVER_NAME', 'localhost');
 define('_SERVER_URL', 'http://'._SERVER_NAME);
 define('_APP_ROOT', '/php_01__widok_kontroler');

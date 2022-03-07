@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="pl" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-
-  </body>
-</html>
 <?php
 require_once dirname(__FILE__).'/config.php';
 //przekierowanie przeglądarki klienta (redirect)
