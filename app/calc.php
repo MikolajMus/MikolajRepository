@@ -37,15 +37,15 @@ if ( $z == "") {
 if (empty( $messages )) {
 
 	// sprawdzenie, czy $x i $y są liczbami całkowitymi
-	if (! is_numeric( $x )) {
-		$messages [] = 'Pierwsza wartość nie jest liczbą całkowitą';
+	   if (! is_numeric( $x )) {
+		     $messages [] = 'Pierwsza wartość nie jest liczbą całkowitą';
 	}
 
-	if (! is_numeric( $y )) {
-		$messages [] = 'Druga wartość nie jest liczbą całkowitą';
+	   if (! is_numeric( $y )) {
+		     $messages [] = 'Druga wartość nie jest liczbą całkowitą';
 	}
-if (! is_numeric( $z )) {
-		$messages [] = 'Trzecia wartość nie jest liczbą całkowitą';
+     if (! is_numeric( $z )) {
+		     $messages [] = 'Trzecia wartość nie jest liczbą całkowitą';
 	}
 }
 
@@ -62,8 +62,8 @@ if (empty ( $messages )) { // gdy brak błędów
 	//wykonanie operacji
 
 
-        $z=12*$z;
-	      $y=$y/100;
+      $z=12*$z;
+      $y=$y/100;
 
 	   $result = ($x*$y)/(12*(1-((12/(12+$y))**$z)));
   //$result= ($a*$b)/((12*(1-((12/((12+$b)**$c))))));

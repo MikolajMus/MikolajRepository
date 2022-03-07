@@ -15,17 +15,17 @@
 
       <form action="<?php print(_APP_URL);?>/app/calc.php" method="post">
 
-        <label for="id_x">Kwota: </label>
-        <input id="id_x" type="text" name="x" value="<?php if (isset($x)) print($x); ?>"/<><br/>
+      <label for="id_x">Kwota: </label>
+      <input id="id_x" type="text" name="x" value="<?php if (isset($x)) print($x); ?>"/<><br/>
 
 
-        <label for="id_y">Oprocentowanie: </label>
-	      <input id="id_y" type="text" name="y" value="<?php if (isset($y))print($y);?>"/<><br/>
+      <label for="id_y">Oprocentowanie: </label>
+      <input id="id_y" type="text" name="y" value="<?php if (isset($y))print($y);?>"/<><br/>
 
-	      <label for="id_z">Liczba lat:   <laber/>
-	      <input id="id_z" type="text" name="z" value="<?php if (isset($z))print($z);?>"/<><br/>
+      <label for="id_z">Liczba lat:   <laber/>
+      <input id="id_z" type="text" name="z" value="<?php if (isset($z))print($z);?>"/<><br/>
 
-	      <input type="submit" value="Oblicz" />
+      <input type="submit" value="Oblicz" />
 
       </form>
 
