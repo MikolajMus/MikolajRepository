@@ -13,7 +13,7 @@ $y = $_REQUEST ['y'];
 $z = $_REQUEST ['z'];
 
 
- 
+
 // 2. walidacja parametrów z przygotowaniem zmiennych dla widoku
 
 // sprawdzenie, czy parametry zostały przekazane
@@ -27,7 +27,7 @@ if ( $x == "") {
 	$messages [] = 'Nie podano kwoty';
 }
 if ( $y == "") {
-	$messages [] = 'Nie podano liczby lat';
+	$messages [] = 'Nie podano lat kredytu';
 }
 if ( $z == "") {
 	$messages [] = 'Nie podano oprocentowania';
@@ -45,7 +45,7 @@ if (empty( $messages )) {
 		$messages [] = 'Druga wartość nie jest liczbą całkowitą';
 	}
 if (! is_numeric( $z )) {
-		$messages [] = 'Druga wartość nie jest liczbą całkowitą';
+		$messages [] = 'Trzecia wartość nie jest liczbą całkowitą';
 	}
 }
 
@@ -53,22 +53,19 @@ if (! is_numeric( $z )) {
 
 if (empty ( $messages )) { // gdy brak błędów
 
-	$a = $x;
-	$b = $y;
-	$c = $z;
-
 	//konwersja parametrów na int
-	$a = intval($a);
-	$b = intval($b);
-	$c = intval($c);
+	      $x = intval($x);
+	      $y = intval($y);
+	      $z = intval($z);
 
 
 	//wykonanie operacji
 
-	$c=12*$c;
-	$b=$b/100;
 
-	$result = ($a*$b)/(12*(1-((12/(12+$b))**$c)));
+        $z=12*$z;
+	      $y=$y/100;
+
+	   $result = ($x*$y)/(12*(1-((12/(12+$y))**$z)));
   //$result= ($a*$b)/((12*(1-((12/((12+$b)**$c))))));
 
 
@@ -78,3 +75,4 @@ if (empty ( $messages )) { // gdy brak błędów
 // - zainicjowane zmienne ($messages,$x,$y,$operation,$result)
 //   będą dostępne w dołączonym skrypcie
 include 'calc_view.php';
+?>
