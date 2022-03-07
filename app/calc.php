@@ -37,14 +37,14 @@ if ( $z == "") {
 if (empty( $messages )) {
 
 	// sprawdzenie, czy $x i $y są liczbami całkowitymi
-	   if (! is_numeric( $x )) {
+    if (! is_numeric( $x )) {
 		     $messages [] = 'Pierwsza wartość nie jest liczbą całkowitą';
 	}
 
-	   if (! is_numeric( $y )) {
+    if (! is_numeric( $y )) {
 		     $messages [] = 'Druga wartość nie jest liczbą całkowitą';
 	}
-     if (! is_numeric( $z )) {
+    if (! is_numeric( $z )) {
 		     $messages [] = 'Trzecia wartość nie jest liczbą całkowitą';
 	}
 }
