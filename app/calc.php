@@ -2,27 +2,27 @@
 // KONTROLER strony kalkulatora
 require_once dirname(__FILE__).'/../config.php';
 
-// W kontrolerze niczego nie wysyła się do klienta.
-// Wysłaniem odpowiedzi zajmie się odpowiedni widok.
-// Parametry do widoku przekazujemy przez zmienne.
-
-// 1. pobranie parametrów
-//komentarz
-$x = $_REQUEST ['x'];
-$y = $_REQUEST ['y'];
-$z = $_REQUEST ['z'];
 
 
+include _ROOT_PATH.'/app/Security/check.php';
+//z-operacja
 
-// 2. walidacja parametrów z przygotowaniem zmiennych dla widoku
-
-// sprawdzenie, czy parametry zostały przekazane
-if ( ! (isset($x) && isset($y)  && isset($z))) {
-	//sytuacja wystąpi kiedy np. kontroler zostanie wywołany bezpośrednio - nie z formularza
-	$messages [] = 'Błędne wywołanie aplikacji. Brak jednego z parametrów.';
+function getParams(&$x,&$y,&$z){
+	$x = isset($_REQUEST['x']) ? $_REQUEST['x'] : null;
+	$y = isset($_REQUEST['y']) ? $_REQUEST['y'] : null;
+	$z = isset($_REQUEST['z']) ? $_REQUEST['z'] : null;
 }
 
-// sprawdzenie, czy potrzebne wartości zostały przekazane
+
+
+function validate(&$x,&$y,&$z,&$messages){
+
+if ( ! (isset($x) && isset($y)  && isset($z))) {
+	return false;
+
+}
+
+// sprawdzenie, czy wartosci zostały podane
 if ( $x == "") {
 	$messages [] = 'Nie podano kwoty';
 }
@@ -34,7 +34,7 @@ if ( $z == "") {
 }
 
 //nie ma sensu walidować dalej gdy brak parametrów
-if (empty( $messages )) {
+if (count( $messages ) != 0) return false;
 
 	// sprawdzenie, czy $x i $y są liczbami całkowitymi
     if (! is_numeric( $x )) {
@@ -47,12 +47,13 @@ if (empty( $messages )) {
     if (! is_numeric( $z )) {
 		     $messages [] = 'Trzecia wartość nie jest liczbą całkowitą';
 	}
+		if (count($messages) != 0) return false;
+		else return true;
 }
 
-// 3. wykonaj zadanie jeśli wszystko w porządku
 
-if (empty ( $messages )) { // gdy brak błędów
-
+function process(&$x,&$y,&$z,&$messages,&$result){
+global $role;
 	//konwersja parametrów na int
 	      $x = intval($x);
 	      $y = intval($y);
@@ -60,19 +61,28 @@ if (empty ( $messages )) { // gdy brak błędów
 
 
 	//wykonanie operacji
+if ($role == 'admin'){
+	$z=12*$z;
+	$y=$y/100;
+$result = ($x*$y)/(12*(1-((12/(12+$y))**$z)));
+}else{
+	if ($x>2000)
+	$messages[] = 'Tylko admin moze brac kredyt na wiecej niz 2000';
+}
+
+$x = null;
+$y = null;
+$z = null;
+$result = null;
+$messages = array();
 
 
-      $z=12*$z;
-      $y=$y/100;
-
-	   $result = ($x*$y)/(12*(1-((12/(12+$y))**$z)));
-  //$result= ($a*$b)/((12*(1-((12/((12+$b)**$c))))));
-
-
+getParams($x,$y,$operation);
+	if ( validate($x,$y,$operation,$messages) ) {
+ process($x,$y,$operation,$messages,$result);
 
 }
-// 4. Wywołanie widoku z przekazaniem zmiennych
-// - zainicjowane zmienne ($messages,$x,$y,$operation,$result)
-//   będą dostępne w dołączonym skrypcie
+
+
 include 'calc_view.php';
 ?>
