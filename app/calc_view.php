@@ -26,13 +26,13 @@
       <input id="id_x" type="text" name="x" value="<?php out($x)?>"/<><br/>
 
 
-      <label for="id_y">Oprocentowanie: </label>
+      <label for="id_y">Liczba lat: </label>
       <input id="id_y" type="text" name="y" value="<?php out($y)?>"/<><br/>
 
-      <label for="id_z">Liczba lat:   <laber/>
+      <label for="id_z">Oprocentowanie:   <laber/>
       <input id="id_z" type="text" name="z" value="<?php out($z)?>"/<><br/>
 
-      <input type="submit" value="Oblicz" class="pure-button pure-button-primary" />
+      <input type="submit" value="Oblicz" class="pure-button pure-button-primary"/>
 
       </form>
 

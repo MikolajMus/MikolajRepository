@@ -37,14 +37,14 @@ if ( $z == "") {
 if (count( $messages ) != 0) return false;
 
 	// sprawdzenie, czy $x i $y są liczbami całkowitymi
-    if (! is_numeric( $x )) {
+    if (! is_numeric( $x )||!$x>0) {
 		     $messages [] = 'Pierwsza wartość nie jest liczbą całkowitą';
 	}
 
-    if (! is_numeric( $y )) {
-		     $messages [] = 'Druga wartość nie jest liczbą całkowitą';
+    if (! is_numeric( $y )||!$y>0) {
+		     $messages [] = 'Druga wartość nie jest liczbą większą od zera';
 	}
-    if (! is_numeric( $z )) {
+    if (! is_numeric( $z )||!$z>0) {
 		     $messages [] = 'Trzecia wartość nie jest liczbą całkowitą';
 	}
 		if (count($messages) != 0) return false;
@@ -52,7 +52,7 @@ if (count( $messages ) != 0) return false;
 }
 
 
-function process(&$x,&$y,&$z,&$messages,&$result){
+function process($x,$y,$z,&$messages,&$result){
 global $role;
 	//konwersja parametrów na int
 	      $x = intval($x);
@@ -61,28 +61,20 @@ global $role;
 
 
 	//wykonanie operacji
-if ($role == 'admin'){
+	if ($role != 'admin' &&$x>2000){
+		$messages[] = 'Tylko admin moze brac kredyt na wiecej niz 2000';
+}
+ else{
 	$z=12*$z;
 	$y=$y/100;
-$result = ($x*$y)/(12*(1-((12/(12+$y))**$z)));
-}else{
-	if ($x>2000)
-	$messages[] = 'Tylko admin moze brac kredyt na wiecej niz 2000';
+	$result = ($x*$y)/(12*(1-((12/(12+$y))**$z)));
 }
-
-$x = null;
-$y = null;
-$z = null;
-$result = null;
+}
 $messages = array();
-
-
 getParams($x,$y,$z);
 	if ( validate($x,$y,$z,$messages) ) {
  process($x,$y,$z,$messages,$result);
 
 }
-}
-
 include 'calc_view.php';
 ?>
