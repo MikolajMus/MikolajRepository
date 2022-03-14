@@ -82,7 +82,7 @@ getParams($x,$y,$operation);
  process($x,$y,$operation,$messages,$result);
 
 }
-
+}
 
 include 'calc_view.php';
 ?>
