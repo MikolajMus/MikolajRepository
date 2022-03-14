@@ -10,7 +10,7 @@ include _ROOT_PATH.'/app/security/check.php';
 	<title>Chroniona strona</title>
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 </head>
-<body>
+<body style="background-color:#56638A">
 
 <div style="width:90%; margin: 2em auto;">
 	<a href="<?php print(_APP_ROOT); ?>/app/calc.php" class="pure-button">Powrót do kalkulatora</a>
