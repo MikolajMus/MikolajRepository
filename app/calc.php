@@ -77,9 +77,9 @@ $result = null;
 $messages = array();
 
 
-getParams($x,$y,$operation);
-	if ( validate($x,$y,$operation,$messages) ) {
- process($x,$y,$operation,$messages,$result);
+getParams($x,$y,$z);
+	if ( validate($x,$y,$z,$messages) ) {
+ process($x,$y,$z,$messages,$result);
 
 }
 }
