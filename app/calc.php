@@ -72,6 +72,7 @@ global $role;
 	$result = ($form['x']*$form['y'])/(12*(1-((12/(12+$form['y']))**$form['z'])));
 	}
 }
+$result=null;
 $messages = array();
 getParams($form);
 	if ( validate($form,$infos,$hide_intro,$messages) ) {
