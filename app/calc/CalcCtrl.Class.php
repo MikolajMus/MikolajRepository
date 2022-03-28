@@ -19,9 +19,9 @@ class CalcCtrl {
 	}
 
 	public function getParams(){
-		$form['x'] = isset($_REQUEST['x']) ? $_REQUEST['x'] : null;
-		$form['y'] = isset($_REQUEST['y']) ? $_REQUEST['y'] : null;
-		$form['z'] = isset($_REQUEST['z']) ? $_REQUEST['z'] : null;
+		$this->form->x = isset($_REQUEST['x']) ? $_REQUEST['x'] : null;
+		$this->form->y = isset($_REQUEST['y']) ? $_REQUEST['y'] : null;
+		$this->form->z = isset($_REQUEST['z']) ? $_REQUEST['z'] : null;
  }
 
 
