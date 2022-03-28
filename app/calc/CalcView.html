@@ -7,17 +7,17 @@
 <h3>Kalkulator kredytowy</h3>
 
 
-<form class="pure-form pure-form-stacked" action="{$app_url}/app/calc.php" method="post">
+<form class="pure-form pure-form-stacked" action="{$conf->action_root}calcCompute" method="post">
 
 	<fieldset>
 	<label for="x">Kwota: </label>
-	<input type="text" placeholder="$" name="x" value="{$form['x']}"/<><br/>
+	<input type="text" placeholder="$" name="x" value="{$form->x}"/<><br/>
 
 	<label for="y">Liczba lat: </label>
-	<input type="text" placeholder="do 20" name="y" value="{$form['y']}"/<><br/>
+	<input type="text" placeholder="do 20" name="y" value="{$form->y}"/<><br/>
 
 	<label for="z">Oprocentowanie:   <laber/>
-	<input type="text" placeholder="%" name="z" value="{$form['z']}"/<><br/>
+	<input type="text" placeholder="%" name="z" value="{$form->z}"/<><br/>
 	</fieldset>
 
 	<button type="button" class="pure-button pure-button-primary">Oblicz</button>
