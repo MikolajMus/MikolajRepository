@@ -9,11 +9,12 @@ require_once $conf->root_path.'/app/calc/CalcResult.class.php';
 
 class CalcCtrl {
 
-	private $messages;
+	private $msgs;
 	private $form;
 	private $result;
+
 	public function __construct(){
-		$this->messages = new Messages();
+		$this->msgs = new Messages();
 		$this->form = new CalcForm();
 		$this->result = new CalcResult();
 	}
@@ -40,35 +41,36 @@ if ( ! (isset($this->form->x ) && isset($this->form->y)  && isset($this->form->z
 
 // sprawdzenie, czy wartosci zostały podane
 if ( $this->form->x == "") {
-	$this->messages->addError('Nie podano kwoty');
+	$this->msgs->addError('Nie podano kwoty');
 }
 if ( $this->form->y == "") {
-	$this->messages->addError('Nie podano lat kredytu');
+	$this->msgs->addError('Nie podano lat kredytu');
 }
 if ( $this->form->z == "") {
-	$this->messages->addError('Nie podano oprocentowania');
+	$this->msgs->addError('Nie podano oprocentowania');
 }
 
 //nie ma sensu walidować dalej gdy brak parametrów
-if (! $this->messages->isError()){
+if (! $this->msgs->isError()){
 
 	// sprawdzenie, czy $x i $y są liczbami całkowitymi
     if (! is_numeric( $this->form->x )||!$this->form->x>0) {
-		     $this->messages->addError('Pierwsza wartość nie jest liczbą całkowitą');
+		     $this->msgs->addError('Pierwsza wartość nie jest liczbą całkowitą');
 	}
 
     if (! is_numeric( $this->form->y )||!$this->form->y>0) {
-		     $this->messages->addError('Druga wartość nie jest liczbą większą od zera');
+		     $this->msgs->addError('Druga wartość nie jest liczbą większą od zera');
 	}
     if (! is_numeric( $this->form->z )||!$this->form->z>0) {
-		     $this->messages->addError('Trzecia wartość nie jest liczbą całkowitą');
+		     $this->msgs->addError('Trzecia wartość nie jest liczbą całkowitą');
 	}
 }
-		return ! $this->messages->isError();
+		return ! $this->msgs->isError();
 }
 
 
 public function process(){
+
  		$this->getParams();
 
  		if ($this->validate()) {
@@ -77,15 +79,16 @@ public function process(){
 	      $this->form->x = intval($this->form->x);
 	      $this->form->y = intval($this->form->y);
 	      $this->form->z = intval($this->form->z);
-				$this->messages->addInfo('Paranetry poprawne');
+				$this->msgs->addInfo('Paranetry poprawne');
 
 	//wykonanie operacji
+        $x =$this->form->x;
+				$y =$this->form->y*12;
+				$z =$this->form->z/100;
 
-				$this->form->z=12*$this->form->z;
-				$this->form->y=$this->form->y/100;
-				$this->result = ($this->form->x*$this->form->y)/(12*(1-((12/(12+$this->form->y))**$this->form->z)));
-
-		$this->messages->addInfo('Wykonano obliczenie');
+				$result = ($x*$z)/(12*(1-((12/(12+$z))**$y)));
+				$this->result->result = number_format($result, 1, ',', ' ');
+		$this->msgs->addInfo('Wykonano obliczenie');
 }
  	  $this->generateView();
 }
@@ -101,7 +104,7 @@ $smarty->assign('page_header','Kontroler główny');
 
 $smarty->assign('form',$this->form);
 $smarty->assign('res',$this->result);
-$smarty->assign('messages',$this->messages);
+$smarty->assign('msgs',$this->msgs);
 
 
 

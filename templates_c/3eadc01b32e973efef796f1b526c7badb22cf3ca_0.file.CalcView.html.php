@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-03-28 11:53:23
+/* Smarty version 4.1.0, created on 2022-03-28 17:26:14
   from 'C:\Users\Aresweet\Desktop\Nowy folder (6)\htdocs\MikolajRepository\app\calc\CalcView.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6241a1b3357311_27388035',
+  'unifunc' => 'content_6241efb6be7465_97559252',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3eadc01b32e973efef796f1b526c7badb22cf3ca' => 
     array (
       0 => 'C:\\Users\\Aresweet\\Desktop\\Nowy folder (6)\\htdocs\\MikolajRepository\\app\\calc\\CalcView.html',
-      1 => 1648468398,
+      1 => 1648488309,
       2 => 'file',
     ),
   ),
@@ -20,30 +20,30 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6241a1b3357311_27388035 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6241efb6be7465_97559252 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4250015586241a1b334b1a5_33893680', 'footer');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4888183856241efb6bd6f29_33089159', 'footer');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19124964776241a1b334ba23_51045535', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19933567906241efb6bd7c48_54949194', 'content');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, ($_smarty_tpl->tpl_vars['conf']->value->root_path).("/templates/main.html"));
 }
 /* {block 'footer'} */
-class Block_4250015586241a1b334b1a5_33893680 extends Smarty_Internal_Block
+class Block_4888183856241efb6bd6f29_33089159 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'footer' => 
   array (
-    0 => 'Block_4250015586241a1b334b1a5_33893680',
+    0 => 'Block_4888183856241efb6bd6f29_33089159',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -53,12 +53,12 @@ przykładowa tresć stopki <?php
 }
 /* {/block 'footer'} */
 /* {block 'content'} */
-class Block_19124964776241a1b334ba23_51045535 extends Smarty_Internal_Block
+class Block_19933567906241efb6bd7c48_54949194 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_19124964776241a1b334ba23_51045535',
+    0 => 'Block_19933567906241efb6bd7c48_54949194',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -91,11 +91,11 @@ calcCompute" method="post">
 
 <div class="messages">
 
-<?php if ($_smarty_tpl->tpl_vars['messages']->value->isError()) {?>
+<?php if ($_smarty_tpl->tpl_vars['msgs']->value->isError()) {?>
 		<h4>Wystąpiły błędy: </h4>
 		<ol class="err">
 		<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['messages']->value->getErrors(), 'err');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msgs']->value->getErrors(), 'err');
 $_smarty_tpl->tpl_vars['err']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['err']->value) {
 $_smarty_tpl->tpl_vars['err']->do_else = false;
@@ -108,11 +108,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 		</ol>
 <?php }?>
 
-<?php if ($_smarty_tpl->tpl_vars['messages']->value->isInfo()) {?>
+<?php if ($_smarty_tpl->tpl_vars['msgs']->value->isInfo()) {?>
 		<h4>Informacje: </h4>
 		<ol class="inf">
 		<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['messages']->value->getInfos(), 'inf');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msgs']->value->getInfos(), 'inf');
 $_smarty_tpl->tpl_vars['inf']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['inf']->value) {
 $_smarty_tpl->tpl_vars['inf']->do_else = false;
