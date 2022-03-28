@@ -1,4 +1,4 @@
-{extends file="../templates/main.html"}
+{extends file=$conf->root_path|cat:"/templates/main.html"}
 
 {block name=footer}przykładowa tresć stopki {/block}
 
@@ -11,53 +11,50 @@
 
 	<fieldset>
 	<label for="x">Kwota: </label>
-	<input type="text" placeholder="$" name="x" value="{$form->x}"/<><br/>
+	<input id="x" type="text" placeholder="$" name="x" value="{$form->x}"/<><br/>
 
 	<label for="y">Liczba lat: </label>
-	<input type="text" placeholder="do 20" name="y" value="{$form->y}"/<><br/>
+	<input id="y" type="text" placeholder="do 20" name="y" value="{$form->y}"/<><br/>
 
 	<label for="z">Oprocentowanie:   <laber/>
-	<input type="text" placeholder="%" name="z" value="{$form->z}"/<><br/>
+	<input id="z" type="text" placeholder="%" name="z" value="{$form->z}"/<><br/>
 	</fieldset>
 
-	<button type="button" class="pure-button pure-button-primary">Oblicz</button>
+	<button type="submit" class="pure-button pure-button-primary">Oblicz</button>
 
 </form>
 
 <div class="messages">
 
 {* wyświeltenie listy błędów, jeśli istnieją *}
-{if isset($messages)}
-	{if count($messages) > 0}
+{if $messages->isError()}
 		<h4>Wystąpiły błędy: </h4>
 		<ol class="err">
-		{foreach  $messages as $msg}
+		{foreach  $messages->getErrors() as $err}
 		{strip}
-			<li>{$msg}</li>
+			<li>{$err}</li>
 		{/strip}
 		{/foreach}
 		</ol>
-	{/if}
 {/if}
 
 {* wyświeltenie listy informacji, jeśli istnieją *}
-{if isset($infos)}
-	{if count($infos) > 0}
+{if $messages->isInfo()}
 		<h4>Informacje: </h4>
 		<ol class="inf">
-		{foreach  $infos as $msg}
+		{foreach  $messages->getInfos() as $inf}
 		{strip}
-			<li>{$msg}</li>
+			<li>{$inf}</li>
 		{/strip}
 		{/foreach}
 		</ol>
-	{/if}
 {/if}
 
-{if isset($result)}
+
+{if isset($res->result)}
 	<h4>Wynik</h4>
 	<p class="res">
-	{$result}
+	{$res->result}
 	</p>
 {/if}
 

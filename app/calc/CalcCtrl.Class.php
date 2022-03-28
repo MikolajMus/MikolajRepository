@@ -81,13 +81,13 @@ public function process(){
 
 	//wykonanie operacji
 
-				$form['z']=12*$form['z'];
-				$form['y']=$form['y']/100;
-				$result = ($form['x']*$form['y'])/(12*(1-((12/(12+$form['y']))**$form['z'])));
+				$this->form->z=12*$this->form->z;
+				$this->form->y=$this->form->y/100;
+				$this->result = ($this->form->x*$this->form->y)/(12*(1-((12/(12+$this->form->y))**$this->form->z)));
 
-		$this->messages->addInfo('Wykonano obliczenie')
-	}
- 	$this->generateView();
+		$this->messages->addInfo('Wykonano obliczenie');
+}
+ 	  $this->generateView();
 }
 public function generateView(){
 	global $conf;
@@ -100,7 +100,7 @@ $smarty->assign('page_description','Kalkulator kredytowy L_6');
 $smarty->assign('page_header','Kontroler główny');
 
 $smarty->assign('form',$this->form);
-$smarty->assign('result',$this->result);
+$smarty->assign('res',$this->result);
 $smarty->assign('messages',$this->messages);
 
 
